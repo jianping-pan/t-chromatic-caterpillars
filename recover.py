@@ -127,7 +127,7 @@ def recover_three_internal(f, verbose = False):
             return [x-1,1,3]
         else:
             if verbose:
-                print(f"Quadratic equation {c53} = {2*x + 1} + binomial(c-1,2) + binomial(c-1,2)")
+                print(f"Quadratic equation {c53} = {2*x + 1} + binomial(a-1,2) + binomial(c-1,2)")
             a2 = 2
             a1 = -2 * x - 4
             a0 = x ** 2 + 5 * x + 4 - 2 * c53
