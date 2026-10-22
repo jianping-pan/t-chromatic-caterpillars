@@ -315,48 +315,25 @@ def plus_four(b,a_plus_c,mm,verbose = False):
     involves solving equations.
     """
     contribution = 0
-    for i in range(max(2*b-mm-4,0),b): # (1) 101
-        remain = mm + 4 - 2 * b + i
-        if i == b-1 and remain < 1:
-            continue
-        if remain % 2 == 0:
-            part = binomial(b-1,i) * binomial(a_plus_c-2, remain/2)
-            if verbose:
-                print(f"Case 1-0-1 @ i = {i}, contribute {part}")
-            contribution += part
-    for i in range(2*b-mm-2,b): # 202
-        part = binomial(b-1,i) * binomial(a_plus_c-2, mm - 2 * b + 2 + i)
-        if verbose and part:
-            print(f"Case 2-0-2 @ i = {i}, contribute {part}")
-        contribution += part
-    for i in range(floor(mm/2)+1): # 121 todo: double check
+    # 101
+    contribution = binomial(b-1,3) + (b-1) * (a + c - 2)
+    # 202
+    contribution += a + b + c - 3
+    # 121
+    for i in range(floor(b/2)+1):
         # i = number of 2's on ac-leaves
-        part = binomial(a_plus_c-2,i) * binomial(b-1,mm-2*i)
+        part = binomial(a_plus_c-2,i) * binomial(b-1,b-2*i)
         if verbose and part:
             print(f"Case 1-2-1 @ i = {i}, contribute {part}")
         contribution += part
-    for i in range(floor((mm-1)/2)+1): #212
+    # 212
+    for i in range(floor((b-1)/2)+1):
         part = binomial(b-1,i) * binomial(a_plus_c-2,mm-1-2*i)
         if verbose and part:
             print(f"Case 2-1-2 @ i = {i}, contribute {part}")
         contribution += part
-    if mm >= 4:
+    if b >= 4:
         return contribution
-    # handle m = 3 cases
-    for i in range(min(a_plus_c-2,mm+4-a_plus_c)+1): # 020, only applies when m = 3
-        remain = mm + 4 - a_plus_c - i
-        part = binomial(a_plus_c-2,i) * binomial(b-1,remain)
-        if verbose and part:
-            print(f"Case 0-2-0 @ i = {i}, contribute {part}")
-        contribution += part
-    for i in range(a_plus_c-1): # 010, only applies when m = 3
-        remain = mm + 5 - a_plus_c - i
-        if i == 0 and remain < 1:
-            continue
-        if remain % 2 == 0:
-            part = binomial(a_plus_c-2,i) * binomial(b-1,remain/2)
-            if verbose and part:
-                print(f"Case 0-1-0 @ i = {i}, contribute {part}")
     return contribution
 
 def solve_quadratic(a2,a1,a0):
