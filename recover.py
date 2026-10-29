@@ -11,11 +11,11 @@ The remaining functions are auxiliary routines used by these
 reconstruction algorithms.
 
 Authors:
-    [Author names]
+    Aram Bingham, Kyle Celano, Patricia Commins, Rosa Orellana, Jianping Pan, Mary Claire Simone
 
 Related paper:
-    [Paper title]
-    [arXiv link, once available]
+    Principal specializations of the t-chromatic symmetric function
+    https://arxiv.org/abs/2610.31785
 """
 
 from sage.rings.polynomial.polydict import ETuple
